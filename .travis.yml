@@ -12,8 +12,11 @@ jobs:
 cache:
   directories:
     - $HOME/.cache/pip
-services:
-  - elasticsearch
+before_install:
+  - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.10.2-amd64.deb -o elasticsearch.deb
+  - sudo dpkg -i --force-confnew elasticsearch.deb
+  - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+  - sudo service elasticsearch restart
 install:
   - pip install tox coveralls
 before_script:
