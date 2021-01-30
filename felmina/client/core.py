@@ -7,11 +7,15 @@ from werkzeug.local import LocalStack
 class KGClient:
     DEFAULT_KG_ID = 'default'
 
-    def __init__(self, es_hosts, es_client_factory=None):
+    def __init__(self, es_hosts, kg_id=None, es_client_factory=None):
         if es_client_factory is None:
             self.es = Elasticsearch(es_hosts)
         else:
             self.es = es_client_factory()
+        if kg_id is None:
+            self.default_kg_id = self.DEFAULT_KG_ID
+        else:
+            self.default_kg_id = kg_id
 
         from felmina.client.entity import EntityClient
         from felmina.client.relation import RelationClient
