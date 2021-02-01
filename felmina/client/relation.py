@@ -179,3 +179,9 @@ class RelationClient(IndexedClient):
     def count_relations(self) -> int:
         resp = self.es.count(index=self.get_index())
         return resp['count']
+
+    def search_relations(self, query_body: dict) -> List[Relation]:
+        result = self.es.search(body=query_body, index=self.get_index())
+        hits = result['hits']['hits']
+        relations = [Relation(**h['_source']) for h in hits]
+        return relations

@@ -92,3 +92,9 @@ class EntityClient(IndexedClient):
     def count_entities(self) -> int:
         resp = self.es.count(index=self.get_index())
         return resp['count']
+
+    def search_entities(self, query_body: dict) -> List[Entity]:
+        result = self.es.search(body=query_body, index=self.get_index())
+        hits = result['hits']['hits']
+        entities = [Entity(**h['_source']) for h in hits]
+        return entities
