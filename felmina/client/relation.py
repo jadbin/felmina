@@ -122,7 +122,7 @@ class RelationClient(IndexedClient):
                 'bool': {
                     'must': [
                         {
-                            'term': {'end_entity_id': entity_id},
+                            'term': {'start_entity_id': entity_id},
                         },
                     ]
                 }
@@ -141,7 +141,7 @@ class RelationClient(IndexedClient):
                 'bool': {
                     'must': [
                         {
-                            'term': {'start_entity_id': entity_id},
+                            'term': {'end_entity_id': entity_id},
                         },
                     ]
                 }

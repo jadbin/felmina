@@ -34,24 +34,6 @@ class KGClient:
             return
         return top.kg_id
 
-    def _entity_type_id_to_name(self, entity_type_id: str):
-        pass
-
-    def _entity_type_name_to_id(self, entity_type_name: str, auto_create=True):
-        pass
-
-    def _property_type_id_to_name(self, property_type_id: str):
-        pass
-
-    def _property_type_name_to_id(self, property_type_name: str, auto_create=True):
-        pass
-
-    def _relation_type_id_to_name(self, relation_type_id: str):
-        pass
-
-    def _relation_type_name_to_id(self, relation_type_name: str, auto_create=True):
-        pass
-
 
 _client_ctx_stack = LocalStack()
 
