@@ -79,21 +79,13 @@ class RelationClient(IndexedClient):
         self.es.delete_by_query(self.get_index(), body=q)
 
     def add_relation(self, relation: Relation):
-        relation.id = self.get_relation_id(
-            relation.start_entity_id,
-            relation.relation_type,
-            relation.end_entity_id,
-        )
-        relation.create_time = get_current_datetime()
-
+        self._init_new_relation(relation)
         data = relation.dict()
         self.es.index(self.get_index(), body=data, id=relation.id)
 
     def add_relations(self, relations: List[Relation]):
         for r in relations:
-            r.id = self.get_relation_id(r.start_entity_id, r.relation_type, r.end_entity_id)
-            r.create_time = get_current_datetime()
-
+            self._init_new_relation(r)
         data = [{
             '_op_type': 'index',
             '_index': self.get_index(),
@@ -101,6 +93,14 @@ class RelationClient(IndexedClient):
             '_source': r.dict(),
         } for r in relations]
         bulk(self.es, data)
+
+    def _init_new_relation(self, relation: Relation):
+        relation.id = self.get_relation_id(
+            relation.start_entity_id,
+            relation.relation_type,
+            relation.end_entity_id,
+        )
+        relation.create_time = get_current_datetime()
 
     def delete_relation_by_id(self, relation_id: str) -> bool:
         try:
