@@ -74,6 +74,7 @@ class EntityClient(IndexedClient):
         if not entity.properties:
             entity.properties = []
         entity.create_time = dt.datetime.now()
+        entity.kg_id = self.client.current_kg_id()
 
     def delete_entity_by_id(self, entity_id: str) -> bool:
         try:

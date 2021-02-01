@@ -101,6 +101,7 @@ class RelationClient(IndexedClient):
             relation.end_entity_id,
         )
         relation.create_time = get_current_datetime()
+        relation.kg_id = self.client.current_kg_id()
 
     def delete_relation_by_id(self, relation_id: str) -> bool:
         try:

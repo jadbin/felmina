@@ -23,7 +23,7 @@ class IndexedClient(NamespacedClient, metaclass=ABCMeta):
         self.index_exists = set()
 
     def get_index(self, auto_create=True):
-        kg_id = self.client.current_kg_id() or self.client.default_kg_id
+        kg_id = self.client.current_kg_id()
         index = f'{self.INDEX_PREFIX}.{kg_id}'
 
         if auto_create and index not in self.index_exists:

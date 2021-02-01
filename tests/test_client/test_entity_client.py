@@ -18,7 +18,7 @@ def test_create_entity(client: KGClient):
 
         _entity = client.entity.get_entity_by_id(entity.id)
         assert _entity.id == entity.id
-        assert _entity.dict(exclude={'id', 'create_time'}) == data
+        assert _entity.dict(exclude={'id', 'create_time', 'kg_id'}) == data
 
     finally:
         if entity.id:

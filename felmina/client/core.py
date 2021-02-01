@@ -31,7 +31,7 @@ class KGClient:
     def current_kg_id(self) -> Optional[str]:
         top: KGContext = _client_ctx_stack.top
         if top is None:
-            return
+            return self.default_kg_id
         return top.kg_id
 
 

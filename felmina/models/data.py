@@ -15,6 +15,7 @@ class Entity(BaseModel):
     entity_type: str = None
     properties: List[Property] = None
     create_time: dt.datetime = None
+    kg_id: str = None
 
 
 class Relation(BaseModel):
@@ -25,6 +26,7 @@ class Relation(BaseModel):
     end_entity_kg_id: str = None
     relation_type: str
     create_time: dt.datetime = None
+    kg_id: str = None
 
 
 class SCHEMA_TYPE:
