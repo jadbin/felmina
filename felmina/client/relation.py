@@ -135,7 +135,7 @@ class RelationClient(IndexedClient):
         relations = [Relation(**h['_source']) for h in hits]
         return relations
 
-    def get_relations_end_from(self, entity_id: str, max_count: int = 1000) -> List[Relation]:
+    def get_relations_end_to(self, entity_id: str, max_count: int = 1000) -> List[Relation]:
         q = {
             'query': {
                 'bool': {
