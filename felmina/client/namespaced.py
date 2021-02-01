@@ -22,9 +22,8 @@ class IndexedClient(NamespacedClient, metaclass=ABCMeta):
 
         self.index_exists = set()
 
-    def get_index(self, kg_id: str = None, auto_create=True):
-        if kg_id is None:
-            kg_id = self.client.current_kg_id() or self.client.default_kg_id
+    def get_index(self, auto_create=True):
+        kg_id = self.client.current_kg_id() or self.client.default_kg_id
         index = f'{self.INDEX_PREFIX}.{kg_id}'
 
         if auto_create and index not in self.index_exists:
@@ -40,3 +39,6 @@ class IndexedClient(NamespacedClient, metaclass=ABCMeta):
     @abstractmethod
     def _get_index_settings(self) -> dict:
         pass
+
+    def flush_index(self):
+        self.es.indices.flush(index=self.get_index())
