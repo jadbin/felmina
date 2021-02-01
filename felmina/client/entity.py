@@ -84,3 +84,7 @@ class EntityClient(IndexedClient):
             return Entity(**result['_source'])
         except NotFoundError:
             pass
+
+    def count_entities(self) -> int:
+        resp = self.es.count(index=self.get_index())
+        return resp['count']
