@@ -26,13 +26,7 @@ class EntityClient(IndexedClient):
                         'type': 'nested',
                         'properties': {
                             'name': {
-                                'type': 'text',
-                                'fields': {
-                                    'keyword': {
-                                        'type': 'keyword',
-                                        'ignore_above': 256,
-                                    }
-                                }
+                                'type': 'keyword',
                             },
                             'value': {
                                 'type': 'text',

@@ -27,6 +27,7 @@ class Relation(BaseModel):
     relation_type: str
     create_time: dt.datetime = None
     kg_id: str = None
+    properties: List[Property] = None
 
 
 class SCHEMA_TYPE:

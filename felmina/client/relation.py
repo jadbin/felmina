@@ -36,7 +36,24 @@ class RelationClient(IndexedClient):
                     },
                     'created_time': {
                         'type': 'date',
-                    }
+                    },
+                    'properties': {
+                        'type': 'nested',
+                        'properties': {
+                            'name': {
+                                'type': 'keyword',
+                            },
+                            'value': {
+                                'type': 'text',
+                                'fields': {
+                                    'keyword': {
+                                        'type': 'keyword',
+                                        'ignore_above': 256,
+                                    }
+                                }
+                            }
+                        },
+                    },
                 }
             }
         }
