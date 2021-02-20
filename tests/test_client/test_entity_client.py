@@ -1,5 +1,5 @@
 from felmina import KGClient
-from felmina.models.data import Entity
+from felmina.schema.data import Entity
 
 
 def test_create_entity(client: KGClient):

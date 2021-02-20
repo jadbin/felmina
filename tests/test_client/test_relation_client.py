@@ -1,5 +1,5 @@
 from felmina import KGClient
-from felmina.models.data import Entity, Relation
+from felmina.schema.data import Entity, Relation
 from tests.test_client.utils import wait_index
 
 
