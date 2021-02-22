@@ -4,7 +4,7 @@ from typing import Optional
 from elasticsearch import NotFoundError, ConflictError
 
 from felmina.client.namespaced import IndexedClient
-from felmina.models.data import SchemaType, SCHEMA_TYPE
+from felmina.schema.data import SchemaType, SCHEMA_TYPE
 from felmina.utils import get_current_datetime
 
 

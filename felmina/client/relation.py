@@ -5,7 +5,7 @@ from elasticsearch import NotFoundError
 from elasticsearch.helpers import bulk
 
 from felmina.client.namespaced import IndexedClient
-from felmina.models.data import Relation
+from felmina.schema.data import Relation
 from felmina.utils import get_current_datetime
 
 
